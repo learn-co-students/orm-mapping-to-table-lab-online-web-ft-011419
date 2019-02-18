@@ -13,8 +13,8 @@ end
   #  with DB[:conn]  
 
 def self.create_table
-  DB[:conn].execute("CREATE TABLE students
-  (id INTEGER PRIMARY KEY, name TEXT, grade INTEGER)")
+  DB[:conn].execute(
+    "CREATE TABLE students (id INTEGER PRIMARY KEY, name TEXT, grade INTEGER)")
 end
   
 def self.drop_table
@@ -30,18 +30,12 @@ def save
   @id = DB[:conn].execute("SELECT id FROM students WHERE id = (SELECT (id) FROM students);")[0][0]
 end
 
-
 def self.create(student)
   student = self.new(student[:name], student[:grade])
   student.save
   student
 end
-  
-
-
-
-
-
-
-
 end
+
+
+
